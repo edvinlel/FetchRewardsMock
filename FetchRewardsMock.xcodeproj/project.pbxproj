@@ -16,6 +16,9 @@
 		E40EA1152C56EB4B00B1D1F3 /* FetchRewardsMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1142C56EB4B00B1D1F3 /* FetchRewardsMockTests.swift */; };
 		E40EA11F2C56EB4B00B1D1F3 /* FetchRewardsMockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA11E2C56EB4B00B1D1F3 /* FetchRewardsMockUITests.swift */; };
 		E40EA1212C56EB4B00B1D1F3 /* FetchRewardsMockUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1202C56EB4B00B1D1F3 /* FetchRewardsMockUITestsLaunchTests.swift */; };
+		E40EA1322C56EF8600B1D1F3 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1312C56EF8600B1D1F3 /* Recipe.swift */; };
+		E40EA1342C56F0FF00B1D1F3 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1332C56F0FF00B1D1F3 /* Meal.swift */; };
+		E40EA1362C56F15D00B1D1F3 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1352C56F15D00B1D1F3 /* Category.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		E40EA11A2C56EB4B00B1D1F3 /* FetchRewardsMockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FetchRewardsMockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E40EA11E2C56EB4B00B1D1F3 /* FetchRewardsMockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRewardsMockUITests.swift; sourceTree = "<group>"; };
 		E40EA1202C56EB4B00B1D1F3 /* FetchRewardsMockUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRewardsMockUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E40EA1312C56EF8600B1D1F3 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		E40EA1332C56F0FF00B1D1F3 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		E40EA1352C56F15D00B1D1F3 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +107,10 @@
 			children = (
 				E40EA0FD2C56EB4900B1D1F3 /* AppDelegate.swift */,
 				E40EA0FF2C56EB4900B1D1F3 /* SceneDelegate.swift */,
-				E40EA1012C56EB4900B1D1F3 /* ViewController.swift */,
+				E40EA1302C56EE6000B1D1F3 /* ViewModels */,
+				E40EA12F2C56EE5000B1D1F3 /* Models */,
+				E40EA12E2C56EE4900B1D1F3 /* Networking */,
+				E40EA12D2C56EE3D00B1D1F3 /* Views */,
 				E40EA1032C56EB4900B1D1F3 /* Main.storyboard */,
 				E40EA1062C56EB4B00B1D1F3 /* Assets.xcassets */,
 				E40EA1082C56EB4B00B1D1F3 /* LaunchScreen.storyboard */,
@@ -125,6 +134,38 @@
 				E40EA1202C56EB4B00B1D1F3 /* FetchRewardsMockUITestsLaunchTests.swift */,
 			);
 			path = FetchRewardsMockUITests;
+			sourceTree = "<group>";
+		};
+		E40EA12D2C56EE3D00B1D1F3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E40EA1012C56EB4900B1D1F3 /* ViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E40EA12E2C56EE4900B1D1F3 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		E40EA12F2C56EE5000B1D1F3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E40EA1312C56EF8600B1D1F3 /* Recipe.swift */,
+				E40EA1332C56F0FF00B1D1F3 /* Meal.swift */,
+				E40EA1352C56F15D00B1D1F3 /* Category.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E40EA1302C56EE6000B1D1F3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +299,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E40EA1342C56F0FF00B1D1F3 /* Meal.swift in Sources */,
 				E40EA1022C56EB4900B1D1F3 /* ViewController.swift in Sources */,
 				E40EA0FE2C56EB4900B1D1F3 /* AppDelegate.swift in Sources */,
 				E40EA1002C56EB4900B1D1F3 /* SceneDelegate.swift in Sources */,
+				E40EA1322C56EF8600B1D1F3 /* Recipe.swift in Sources */,
+				E40EA1362C56F15D00B1D1F3 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
