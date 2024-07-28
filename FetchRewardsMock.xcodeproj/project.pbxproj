@@ -19,6 +19,7 @@
 		E40EA1322C56EF8600B1D1F3 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1312C56EF8600B1D1F3 /* Recipe.swift */; };
 		E40EA1342C56F0FF00B1D1F3 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1332C56F0FF00B1D1F3 /* Meal.swift */; };
 		E40EA1362C56F15D00B1D1F3 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1352C56F15D00B1D1F3 /* Category.swift */; };
+		E40EA1382C57005900B1D1F3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1372C57005900B1D1F3 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		E40EA1312C56EF8600B1D1F3 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		E40EA1332C56F0FF00B1D1F3 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		E40EA1352C56F15D00B1D1F3 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		E40EA1372C57005900B1D1F3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 		E40EA12E2C56EE4900B1D1F3 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				E40EA1372C57005900B1D1F3 /* NetworkManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				E40EA1342C56F0FF00B1D1F3 /* Meal.swift in Sources */,
 				E40EA1022C56EB4900B1D1F3 /* ViewController.swift in Sources */,
 				E40EA0FE2C56EB4900B1D1F3 /* AppDelegate.swift in Sources */,
+				E40EA1382C57005900B1D1F3 /* NetworkManager.swift in Sources */,
 				E40EA1002C56EB4900B1D1F3 /* SceneDelegate.swift in Sources */,
 				E40EA1322C56EF8600B1D1F3 /* Recipe.swift in Sources */,
 				E40EA1362C56F15D00B1D1F3 /* Category.swift in Sources */,
