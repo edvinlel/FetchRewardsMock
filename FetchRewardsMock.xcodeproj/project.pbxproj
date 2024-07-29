@@ -20,6 +20,10 @@
 		E40EA1342C56F0FF00B1D1F3 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1332C56F0FF00B1D1F3 /* Meal.swift */; };
 		E40EA1362C56F15D00B1D1F3 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1352C56F15D00B1D1F3 /* Category.swift */; };
 		E40EA1382C57005900B1D1F3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1372C57005900B1D1F3 /* NetworkManager.swift */; };
+		E40EA13A2C57035A00B1D1F3 /* MealViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1392C57035A00B1D1F3 /* MealViewModel.swift */; };
+		E40EA13C2C57039900B1D1F3 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA13B2C57039900B1D1F3 /* RecipeViewModel.swift */; };
+		E40EA1402C57040600B1D1F3 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA13F2C57040600B1D1F3 /* CategoryViewModel.swift */; };
+		E40EA1422C5713F900B1D1F3 /* CategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40EA1412C5713F900B1D1F3 /* CategoryType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,10 @@
 		E40EA1332C56F0FF00B1D1F3 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		E40EA1352C56F15D00B1D1F3 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		E40EA1372C57005900B1D1F3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E40EA1392C57035A00B1D1F3 /* MealViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealViewModel.swift; sourceTree = "<group>"; };
+		E40EA13B2C57039900B1D1F3 /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
+		E40EA13F2C57040600B1D1F3 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		E40EA1412C5713F900B1D1F3 /* CategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,10 +117,10 @@
 			children = (
 				E40EA0FD2C56EB4900B1D1F3 /* AppDelegate.swift */,
 				E40EA0FF2C56EB4900B1D1F3 /* SceneDelegate.swift */,
+				E40EA12D2C56EE3D00B1D1F3 /* Views */,
 				E40EA1302C56EE6000B1D1F3 /* ViewModels */,
 				E40EA12F2C56EE5000B1D1F3 /* Models */,
 				E40EA12E2C56EE4900B1D1F3 /* Networking */,
-				E40EA12D2C56EE3D00B1D1F3 /* Views */,
 				E40EA1032C56EB4900B1D1F3 /* Main.storyboard */,
 				E40EA1062C56EB4B00B1D1F3 /* Assets.xcassets */,
 				E40EA1082C56EB4B00B1D1F3 /* LaunchScreen.storyboard */,
@@ -157,6 +165,7 @@
 		E40EA12F2C56EE5000B1D1F3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E40EA1412C5713F900B1D1F3 /* CategoryType.swift */,
 				E40EA1312C56EF8600B1D1F3 /* Recipe.swift */,
 				E40EA1332C56F0FF00B1D1F3 /* Meal.swift */,
 				E40EA1352C56F15D00B1D1F3 /* Category.swift */,
@@ -167,6 +176,9 @@
 		E40EA1302C56EE6000B1D1F3 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E40EA1392C57035A00B1D1F3 /* MealViewModel.swift */,
+				E40EA13B2C57039900B1D1F3 /* RecipeViewModel.swift */,
+				E40EA13F2C57040600B1D1F3 /* CategoryViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -303,9 +315,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E40EA1342C56F0FF00B1D1F3 /* Meal.swift in Sources */,
+				E40EA13C2C57039900B1D1F3 /* RecipeViewModel.swift in Sources */,
+				E40EA13A2C57035A00B1D1F3 /* MealViewModel.swift in Sources */,
+				E40EA1402C57040600B1D1F3 /* CategoryViewModel.swift in Sources */,
 				E40EA1022C56EB4900B1D1F3 /* ViewController.swift in Sources */,
 				E40EA0FE2C56EB4900B1D1F3 /* AppDelegate.swift in Sources */,
 				E40EA1382C57005900B1D1F3 /* NetworkManager.swift in Sources */,
+				E40EA1422C5713F900B1D1F3 /* CategoryType.swift in Sources */,
 				E40EA1002C56EB4900B1D1F3 /* SceneDelegate.swift in Sources */,
 				E40EA1322C56EF8600B1D1F3 /* Recipe.swift in Sources */,
 				E40EA1362C56F15D00B1D1F3 /* Category.swift in Sources */,
