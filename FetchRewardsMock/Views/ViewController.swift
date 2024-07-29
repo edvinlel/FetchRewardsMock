@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     private let categoryViewModel = CategoryViewModel()
+    private var selectedCategoryIndex: Int = 0
 
     
     private lazy var scrollView: UIScrollView = {
@@ -41,8 +42,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         // Do any additional setup after loading the view.
         
         setConstraints()
-        print(CategoryCollectionViewCell.self)
-
         
         Task {
             await categoryViewModel.fetchCategories()
@@ -75,10 +74,21 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as! CategoryCollectionViewCell
-        cell.configure(with: categoryViewModel.categories[indexPath.item])
+        let isSelected = selectedCategoryIndex == indexPath.item
+        cell.configure(with: categoryViewModel.categories[indexPath.item], isSelected: isSelected)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let previousIndex = selectedCategoryIndex
+        selectedCategoryIndex = indexPath.item
+        collectionView.reloadItems(at: [IndexPath(item: previousIndex, section: 0), indexPath])
+        
+        let selectedCategory = categoryViewModel.categories[indexPath.item]
     }
 }
 
