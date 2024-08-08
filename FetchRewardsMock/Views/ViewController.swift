@@ -12,6 +12,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     private let categoryViewModel = CategoryViewModel()
     private let mealViewModel = MealViewModel()
     private var selectedCategoryIndex: Int = 0
+    private var isInitialLoad = true
 
     
     private lazy var scrollView: UIScrollView = {
@@ -50,24 +51,37 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         label.text = "Meals"
         label.font = UIFont.boldSystemFont(ofSize: 32)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.isHidden = true
+        
         return label
     }()
     
     private lazy var mealCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 16
-        layout.minimumLineSpacing = 16
+        layout.minimumLineSpacing = 38
         let numberOfColumns: CGFloat = 2
         let itemWidth = (view.bounds.width - (numberOfColumns - 1) * layout.minimumInteritemSpacing) / numberOfColumns
-        layout.itemSize = CGSize(width: itemWidth - 10, height: itemWidth + 10)
+        layout.itemSize = CGSize(width: itemWidth - 10, height: itemWidth + 40)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(MealsCollectionViewCell.self, forCellWithReuseIdentifier: MealsCollectionViewCell.identifier)
+        collectionView.register(SeeMoreCollectionViewCell.self, forCellWithReuseIdentifier: SeeMoreCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isScrollEnabled = false
         return collectionView
+    }()
+    
+    private lazy var seeMoreButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("See All", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.layer.borderColor = UIColor.black.cgColor
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
     }()
 
     override func viewDidLoad() {
@@ -82,6 +96,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             
             await mealViewModel.fetchMeals(for: .dessert)
             mealCollectionView.reloadData()
+            
+            mealsLabel.isHidden = false
         }
     }
     
@@ -127,8 +143,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             mealCollectionView.topAnchor.constraint(equalTo: mealsLabel.bottomAnchor, constant: 20),
             mealCollectionView.leadingAnchor.constraint(equalTo: scrollViewContainerView.leadingAnchor, constant: 10),
             mealCollectionView.trailingAnchor.constraint(equalTo: scrollViewContainerView.trailingAnchor, constant: -10),
-            mealCollectionView.bottomAnchor.constraint(equalTo: scrollViewContainerView.bottomAnchor, constant: 0),
-            mealCollectionView.heightAnchor.constraint(equalToConstant: 1000)
+            mealCollectionView.bottomAnchor.constraint(equalTo: scrollViewContainerView.bottomAnchor),
+            mealCollectionView.heightAnchor.constraint(equalToConstant: 1700)
         ])
     }
     
@@ -138,7 +154,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         case categoryCollectionView:
             return categoryViewModel.categories.count
         case mealCollectionView:
-            return mealViewModel.allMeals.count
+            if isInitialLoad {
+                isInitialLoad = false
+                return mealViewModel.displayedMeals.count
+                
+            } else {
+                return mealViewModel.displayedMeals.count + 1
+            }
+            
         default:
             return 0
         }
@@ -154,8 +177,17 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             
             return cell
         case mealCollectionView:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MealsCollectionViewCell.identifier, for: indexPath) as! MealsCollectionViewCell
-            return cell
+            if indexPath.item == mealViewModel.displayedMeals.count {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeeMoreCollectionViewCell.identifier, for: indexPath) as! SeeMoreCollectionViewCell
+                return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MealsCollectionViewCell.identifier, for: indexPath) as! MealsCollectionViewCell
+                
+                let meal = mealViewModel.displayedMeals[indexPath.row]
+                cell.configure(with: meal)
+                return cell
+            }
+
         default:
             return UICollectionViewCell()
         }
@@ -165,11 +197,25 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let previousIndex = selectedCategoryIndex
-        selectedCategoryIndex = indexPath.item
-        collectionView.reloadItems(at: [IndexPath(item: previousIndex, section: 0), indexPath])
-        
-        let selectedCategory = categoryViewModel.categories[indexPath.item]
+        if collectionView == categoryCollectionView {
+            
+            if selectedCategoryIndex != indexPath.item {
+                let previousIndex = selectedCategoryIndex
+                selectedCategoryIndex = indexPath.item
+                collectionView.reloadItems(at: [IndexPath(item: previousIndex, section: 0), indexPath])
+                
+                Task {
+                    let category = self.categoryViewModel.getCategoryName(at: indexPath.item)
+                    await self.mealViewModel.fetchMeals(for: CategoryType(rawValue: category)!)
+                    mealCollectionView.reloadData()
+                }
+            }
+            
+
+            
+            let selectedCategory = categoryViewModel.categories[indexPath.item]
+        }
+
     }
 }
 
