@@ -33,4 +33,8 @@ class CategoryViewModel {
             print("error fetching categories: \(error)")
         }
     }
+    
+    func getCategoryName(at index: Int) -> String {
+        return categories[index]
+    }
 }
